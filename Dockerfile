@@ -77,16 +77,8 @@ RUN set -eux; \
 # Install popular cog dependencies
     apt-get update; \
     apt-get install -y --no-install-recommends \
-        # NotSoBot
-        libmagickwand-dev \
-        libaa1-dev \
-        # CrabRave
-        ffmpeg \
-        imagemagick \
         # RSS (SciPy has no wheels for armv7)
         $([ "$(uname --machine)" = "armv7l" ] && echo "gfortran libopenblas-dev liblapack-dev") \
-        # ReTrigger
-        tesseract-ocr \
     ; \
     # CrabRave needs this policy removed
     sed -i '/@\*/d' /etc/ImageMagick-6/policy.xml; \
